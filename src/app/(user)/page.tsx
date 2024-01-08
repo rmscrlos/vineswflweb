@@ -25,7 +25,7 @@ export default async function Home() {
 	const events: EventType[] = await getEvents();
 
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between py-14">
+		<main className="flex min-h-screen flex-col items-center justify-between pb-14">
 			<div className="mx-4 relative w-[360px] h-[560px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
 				<div className="absolute w-[360px] h-[560px] bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md" />
 				<Image
