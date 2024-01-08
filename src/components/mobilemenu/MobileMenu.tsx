@@ -11,15 +11,21 @@ const MobileMenu: React.FC = () => {
 			<SheetTrigger>
 				<Menu size={30} />
 			</SheetTrigger>
-			<SheetContent className="py-10">
-				<div className="flex flex-col gap-5 py-10">
+			<SheetContent className="py-10 w-full">
+				<div className="flex flex-col justify-center items-center gap-10 py-10 h-full">
 					{navlinks.map((link: NavLink) => (
-						<div key={link.name} className="border-b-2 w-full ">
-							<Link href={link.path} className="self-end w-full">
+						<div key={link.name}>
+							<Link href={link.path} className="font-semibold text-3xl">
 								{link.name}
 							</Link>
 						</div>
 					))}
+				</div>
+				<div className="flex justify-center items-center gap-14 text-sm text-black/30">
+					<Link href="https://www.youtube.com/@vineswfl.church">YouTube</Link>
+					<Link href="https://www.instagram.com/vineswfl.church/">
+						Instagram
+					</Link>
 				</div>
 			</SheetContent>
 		</Sheet>
