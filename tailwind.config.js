@@ -19,6 +19,7 @@ module.exports = {
 		extend: {
 			colors: {
 				vinegreen: "#43bab6",
+				vinedarkgray: "#1b1b1b",
 			},
 			keyframes: {
 				"accordion-down": {
