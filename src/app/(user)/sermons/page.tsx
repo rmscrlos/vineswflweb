@@ -28,7 +28,7 @@ export default async function SermonsPage() {
 										key={_id}
 										className="basis-10/12 ml-4 relative h-[150px] pl-0"
 									>
-										<Link href={`/sermon/${current}`}>
+										<Link href={`/sermons/${current}`}>
 											<div className="absolute w-full h-[150px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
 
 											<Image

@@ -4,6 +4,8 @@ import "./globals.css";
 
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
 	subsets: ["devanagari", "latin-ext", "latin"],
@@ -21,11 +23,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={poppins.className}>
-				<Header />
-				{children}
-				<Footer />
+		<html lang="en" suppressHydrationWarning>
+			<body className={cn(poppins.className, "dark:bg-darkbg")}>
+				<ThemeProvider attribute="class">
+					<Header />
+					{children}
+					<Footer />
+				</ThemeProvider>
 			</body>
 		</html>
 	);

@@ -20,6 +20,7 @@ module.exports = {
 			colors: {
 				vinegreen: "#43bab6",
 				vinedarkgray: "#1b1b1b",
+				darkbg: "var(--background)",
 			},
 			keyframes: {
 				"accordion-down": {
