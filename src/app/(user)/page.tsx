@@ -105,12 +105,12 @@ export default async function Home() {
 						<div className="flex items-center gap-2">VineKids</div>
 					</Link>
 					<Link href="/enjoy" className="flex items-center gap-2 font-medium">
-						Enjoy
+						Enjoy YTH
 					</Link>
 				</div>
 			</div>
 
-			<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[93%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
+			<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[93%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px]">
 				<div>
 					<h3 className="text-xl font-semibold">Follow On Social</h3>
 				</div>

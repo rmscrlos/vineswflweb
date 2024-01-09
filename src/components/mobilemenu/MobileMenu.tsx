@@ -1,6 +1,11 @@
 import { Menu } from "lucide-react";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetTrigger,
+} from "@/components/ui/sheet";
 import Link from "next/link";
 
 import navlinks, { NavLink } from "@/components/header/navlinks";
@@ -14,11 +19,11 @@ const MobileMenu: React.FC = () => {
 			<SheetContent className="py-10 w-full">
 				<div className="flex flex-col justify-center items-center gap-10 py-10 h-full">
 					{navlinks.map((link: NavLink) => (
-						<div key={link.name}>
+						<SheetClose key={link.name} asChild>
 							<Link href={link.path} className="font-semibold text-3xl">
 								{link.name}
 							</Link>
-						</div>
+						</SheetClose>
 					))}
 				</div>
 				<div className="flex justify-center items-center gap-14 text-sm text-black/30">
