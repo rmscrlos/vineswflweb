@@ -5,13 +5,7 @@ import { SermonType, fetchLatestSermon } from "@/api/sermons";
 import { urlForImage } from "../../sanity/lib/image";
 import Link from "next/link";
 
-interface LatestSermonProps {
-	hideButtons?: boolean;
-}
-
-const LatestSermon: React.FC = async ({
-	hideButtons = false,
-}: LatestSermonProps) => {
+const LatestSermon: React.FC = async () => {
 	const {
 		title,
 		slug: { current },
