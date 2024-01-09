@@ -5,8 +5,6 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { urlForImage } from "../../../../sanity/lib/image";
 import LatestSermon from "@/components/LatestSermon";
@@ -28,7 +26,7 @@ export default async function SermonsPage() {
 								({ title, _id, slug: { current }, mainImage }: SermonType) => (
 									<CarouselItem
 										key={_id}
-										className="basis-10/12 / ml-4 relative h-[150px] pl-0"
+										className="basis-10/12 ml-4 relative h-[150px] pl-0"
 									>
 										<Link href={`/sermon/${current}`}>
 											<div className="absolute w-full h-[150px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
@@ -36,7 +34,7 @@ export default async function SermonsPage() {
 											<Image
 												className="rounded-md"
 												fill
-												objectFit="cover"
+												style={{ objectFit: "cover" }}
 												src={urlForImage(mainImage)}
 												alt={`${title}'s image`}
 											/>

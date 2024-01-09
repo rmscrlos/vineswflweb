@@ -7,8 +7,6 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { EventType, deleteEvent } from "@/api/events";
 import { urlForImage } from "../../sanity/lib/image";
@@ -110,8 +108,6 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({ events }) => {
 						</CarouselItem>
 					)}
 				</CarouselContent>
-				<CarouselPrevious className="hidden" />
-				<CarouselNext className="hidden" />
 			</Carousel>
 		</div>
 	);
