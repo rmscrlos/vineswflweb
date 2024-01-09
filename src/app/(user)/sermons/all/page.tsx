@@ -26,7 +26,7 @@ export default async function AllSermonsPage() {
 					<ChevronLeft size={16} />
 					Back
 				</Link>
-				<h3 className="text-3xl w-fit text-nowrap">All Sermons</h3>
+				<h3 className="text-3xl w-full text-left text-nowrap">All Sermons</h3>
 			</div>
 			<div className="w-[93%] mt-8">
 				{sermons &&
