@@ -14,7 +14,7 @@ export type EventType = {
 	externalLink: string;
 };
 
-export const getEvents = async () => {
+export const fetchEvents = async () => {
 	const query = `*[_type == 'events']{
         _id,
         title,

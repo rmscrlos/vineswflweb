@@ -10,7 +10,7 @@ export type SermonType = {
 	mainImage: Image;
 };
 
-export const latestSermon = async () => {
+export const fetchLatestSermon = async () => {
 	const query = `*[_type == "sermon"] | order(publishedAt desc)[0] {
         _id,
         title,
@@ -21,4 +21,17 @@ export const latestSermon = async () => {
 	const sermon: SermonType = await client.fetch(query);
 
 	return sermon;
+};
+
+export const fetchRecentSermons = async () => {
+	const query = `*[_type == "sermon"] | order(publishedAt desc)[1..4] {
+		_id,
+		title,
+		slug,
+		mainImage,
+	}`;
+
+	const sermons: SermonType[] = await client.fetch(query);
+
+	return sermons;
 };

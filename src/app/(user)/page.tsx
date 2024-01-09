@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 
 import { urlForImage } from "../../../sanity/lib/image";
-import { SermonType, latestSermon } from "@/api/sermons";
-import { EventType, getEvents } from "@/api/events";
+import { SermonType, fetchLatestSermon } from "@/api/sermons";
+import { EventType, fetchEvents } from "@/api/events";
 import EventsCarousel from "@/components/EventsCarousel";
 
 export default async function Home() {
@@ -19,10 +19,10 @@ export default async function Home() {
 		title,
 		slug: { current },
 		mainImage,
-	}: SermonType = await latestSermon();
+	}: SermonType = await fetchLatestSermon();
 	const latestSermonImage = urlForImage(mainImage);
 
-	const events: EventType[] = await getEvents();
+	const events: EventType[] = await fetchEvents();
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between pb-14">
