@@ -59,7 +59,7 @@ export default function SermonPage() {
 							<MoreHorizontal />
 						</Button>
 					</DrawerTrigger>
-					<DrawerContent className="mb-4">
+					<DrawerContent className="">
 						<DrawerHeader className="text-left flex flex-col gap-10">
 							<div>
 								<div className="mb-4">
