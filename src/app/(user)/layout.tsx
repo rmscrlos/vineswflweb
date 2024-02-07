@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -30,6 +31,7 @@ export default function RootLayout({
 					{children}
 					<Footer />
 				</ThemeProvider>
+				<SpeedInsights />
 			</body>
 		</html>
 	);
