@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ReactPlayer from "react-player";
-import BlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 import {
 	Facebook,
 	Files,
@@ -66,9 +66,7 @@ export default function SermonPage() {
 						<p className="text-xs font-medium text-white/50">{publishedDate}</p>
 					</div>
 					<div className="text-sm font-light">
-						{sermon.body && (
-							<BlockContent blocks={sermon.body} className="[&_p]:my-2" />
-						)}
+						{sermon.body && <PortableText value={sermon.body} />}
 					</div>
 				</div>
 			) : (

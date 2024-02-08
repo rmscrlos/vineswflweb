@@ -1,4 +1,4 @@
-import { Image } from "sanity";
+import { Image, TypedObject } from "sanity";
 import { client } from "../../sanity/lib/client";
 
 export type SermonType = {
@@ -10,7 +10,7 @@ export type SermonType = {
 	mainImage: Image;
 	publishedAt?: string;
 	videoLink?: string;
-	body?: string;
+	body?: TypedObject;
 };
 
 export const fetchSermons = async () => {
