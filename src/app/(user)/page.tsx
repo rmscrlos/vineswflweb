@@ -71,33 +71,37 @@ export default async function Home() {
 					{events && <EventsCarousel events={events} />}
 					{events && <Events events={events} />}
 
-					<div className="relative text-black/30 h-[450px] bg-darkbg rounded-md flex justify-center items-center font-semibold">
-						<div className="absolute w-full h-[450px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
-						<Image
-							className="rounded-md"
-							fill
-							style={{ objectFit: "cover" }}
-							priority
-							src={lifeGroupImageUrl}
-							alt={`${title}'s image`}
-						/>
-						<div className="z-10 absolute bottom-5 left-5">
-							<h3 className="text-white text-3xl">This is Church. Anywhere!</h3>
+					{lifeGroupImageUrl && (
+						<div className="relative text-black/30 h-[450px] rounded-md flex justify-center items-center font-semibold">
+							<div className="absolute w-full h-[450px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
+							<Image
+								className="rounded-md"
+								fill
+								style={{ objectFit: "cover" }}
+								priority
+								src={lifeGroupImageUrl}
+								alt={`${title}'s image`}
+							/>
+							<div className="z-10 absolute bottom-5 left-5">
+								<h3 className="text-white text-3xl">
+									This is Church. Anywhere!
+								</h3>
 
-							<p className="text-white text-md font-light mb-2">
-								Church happens in small groups!
-							</p>
+								<p className="text-white text-md font-light mb-2">
+									Church happens in small groups!
+								</p>
 
-							<div className="flex items-center gap-2">
-								<Link
-									href="https://vineswfl.churchcenter.com/groups"
-									className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
-								>
-									Join A LifeGroup
-								</Link>
+								<div className="flex items-center gap-2">
+									<Link
+										href="https://vineswfl.churchcenter.com/groups"
+										className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
+									>
+										Join A LifeGroup
+									</Link>
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 				</div>
 
 				<div className="flex flex-col items-center lg:my-10">
