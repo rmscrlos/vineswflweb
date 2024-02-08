@@ -25,28 +25,30 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({ events }) => {
 	}, [events]);
 
 	return (
-		<div className="w-[93%] my-10">
-			<h2 className="text-3xl text-left font-semibold mb-6">Events</h2>
+		<div className="w-full my-10 sm:hidden">
 			<Carousel>
 				<CarouselContent className="w-full">
 					{events &&
 						events.map(
-							({
-								_id,
-								title,
-								mainImage,
-								startDate,
-								endDate,
-								description,
-								externalLink,
-								externalLinkName,
-								internalLink,
-								internalLinkName,
-							}: EventType) => (
+							(
+								{
+									_id,
+									title,
+									mainImage,
+									startDate,
+									endDate,
+									description,
+									externalLink,
+									externalLinkName,
+									internalLink,
+									internalLinkName,
+								}: EventType,
+								index
+							) => (
 								<CarouselItem
 									key={_id}
 									className={cn("basis-11/12 ml-4 relative h-[250px] pl-0", {
-										"basis-[100%]": events.length === 1,
+										"basis-[100%]": events.length === 1 && index !== 0,
 									})}
 								>
 									<div className="absolute w-full h-[250px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />

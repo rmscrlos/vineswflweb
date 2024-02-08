@@ -4,8 +4,8 @@ import { ExternalLink, Instagram, Youtube } from "lucide-react";
 
 const Footer: React.FC = () => {
 	return (
-		<footer className="bg-vinedarkgray text-white py-6 px-8">
-			<div className="border-b-2 mb-6">
+		<footer className="bg-vinedarkgray text-white py-6 px-8 lg:flex lg:items-center lg:justify-around  lg:h-[400px]">
+			<div className="border-b-2 mb-6 lg:w-1/6">
 				<h3 className="font-semibold text-4xl text-center mb-5">
 					a church of overcomers
 				</h3>
@@ -14,8 +14,8 @@ const Footer: React.FC = () => {
 				<h3 className="font-semibold text-lg mb-2">Quick Links</h3>
 				<ul className="text-md text-white/65 flex flex-col gap-1 font-light">
 					<Link href="/about">About</Link>
-					<Link href="/about">Grow</Link>
-					<Link href="/about">Giving</Link>
+					<Link href="/grow">Grow</Link>
+					<Link href="/give">Give</Link>
 				</ul>
 			</div>
 			<div className="mb-8">
