@@ -8,10 +8,13 @@ export type SermonType = {
 		current: string;
 	};
 	mainImage: Image;
+	publishedAt?: string;
+	videoLink?: string;
+	body?: string;
 };
 
 export const fetchSermons = async () => {
-	const query = `*[_type == "sermon"] | order(publishedAt desc) {
+	const query = `*[_type == "sermon" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
 		_id,
 		title,
 		slug,
@@ -30,27 +33,53 @@ export const fetchSermons = async () => {
 };
 
 export const fetchLatestSermon = async () => {
-	const query = `*[_type == "sermon"] | order(publishedAt desc)[0] {
+	const query = `*[_type == "sermon" && !(_id in path("drafts.**"))] | order(publishedAt desc)[0] {
         _id,
         title,
         slug,
         mainImage,
     }`;
 
-	const sermon: SermonType = await client.fetch(query);
-
+	const sermon: SermonType = await client.fetch(
+		query,
+		{},
+		{ cache: "no-cache" }
+	);
 	return sermon;
 };
 
 export const fetchRecentSermons = async () => {
-	const query = `*[_type == "sermon"] | order(publishedAt desc)[1..5] {
+	const query = `*[_type == "sermon" && !(_id in path("drafts.**"))] | order(publishedAt desc)[1..5] {
 		_id,
 		title,
 		slug,
 		mainImage,
 	}`;
 
-	const sermons: SermonType[] = await client.fetch(query);
+	const sermons: SermonType[] = await client.fetch(
+		query,
+		{},
+		{ cache: "no-cache" }
+	);
 
 	return sermons;
+};
+
+export const fetchSermonBySlug = async (
+	slug: string | string[] | undefined
+) => {
+	if (!slug) {
+		return null;
+	}
+	const query = `*[_type == "sermon" && !(_id in path("drafts.**")) && slug.current == "${slug}"] {
+		title,
+		videoLink,
+		_id,
+		publishedAt,
+		body
+	}`;
+
+	const sermon: SermonType = await client.fetch(query, { slug });
+
+	return sermon;
 };

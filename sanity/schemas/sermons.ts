@@ -7,6 +7,7 @@ const sermonsSchema = {
 			name: "title",
 			title: "Title",
 			type: "string",
+			validation: (Rule: any) => Rule.required(),
 		},
 		{
 			name: "slug",
@@ -16,11 +17,13 @@ const sermonsSchema = {
 				source: "title",
 				maxLength: 96,
 			},
+			validation: (Rule: any) => Rule.required(),
 		},
 		{
 			name: "videoLink",
 			title: "Video Link",
 			type: "string",
+			validation: (Rule: any) => Rule.required(),
 		},
 		{
 			name: "mainImage",
@@ -29,14 +32,7 @@ const sermonsSchema = {
 			options: {
 				hotspot: true,
 			},
-		},
-		{
-			name: "mobileImage",
-			title: "Mobile Image",
-			type: "image",
-			options: {
-				hotspot: true,
-			},
+			validation: (Rule: any) => Rule.required(),
 		},
 		{
 			name: "series",
@@ -48,11 +44,13 @@ const sermonsSchema = {
 			name: "publishedAt",
 			title: "Published at",
 			type: "datetime",
+			validation: (Rule: any) => Rule.required(),
 		},
 		{
 			name: "body",
 			title: "Body",
 			type: "blockContent",
+			validation: (Rule: any) => Rule.required(),
 		},
 	],
 

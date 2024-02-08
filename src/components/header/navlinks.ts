@@ -17,8 +17,8 @@ const navlinks = [
 		path: "/grow",
 	},
 	{
-		name: "Giving",
-		path: "/giving",
+		name: "Give",
+		path: "/give",
 	},
 ];
 

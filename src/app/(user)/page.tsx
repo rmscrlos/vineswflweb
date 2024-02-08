@@ -67,7 +67,7 @@ export default async function Home() {
 				</div>
 				<div className="flex flex-col">
 					<Link
-						href="/giving"
+						href="/give"
 						className="flex items-center gap-2 mb-6 font-medium"
 					>
 						<HelpingHand size={20} />
