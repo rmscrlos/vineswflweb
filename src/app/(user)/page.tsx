@@ -12,7 +12,6 @@ import {
 import { urlForImage } from "../../../sanity/lib/image";
 import { SermonType, fetchLatestSermon } from "@/api/sermons";
 import { EventType, fetchEvents } from "@/api/events";
-import EventsCarousel from "@/components/EventsCarousel";
 import Events from "@/components/Events";
 import { fetchImageByTitle } from "@/api/images";
 
