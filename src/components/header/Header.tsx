@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 		<header className="flex justify-between items-center px-3 h-[6rem] lg:max-w-7xl lg:mx-auto">
 			<Link href="/">
 				<h1 className="uppercase text-lg">
-					Vine <span className="font-bold">Church</span>
+					Vine <span className="font-bold text-vinegreen">Church</span>
 				</h1>
 			</Link>
 			<div className="hidden lg:block">

@@ -17,18 +17,18 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 export default async function AllSermonsPage() {
 	const sermons: SermonType[] = await fetchSermons();
 	return (
-		<main className="flex min-h-screen flex-col pb-14 items-center">
-			<div className="flex items-center justify-between w-[93%]">
+		<main className="flex min-h-screen flex-col pb-14 items-center max-w-sm lg:max-w-7xl mx-auto">
+			<div className="flex items-center justify-between w-full px-4 lg:px-14">
 				<Link
 					href="/sermons"
-					className="w-[93%] flex items-center font-semibold text-sm"
+					className="flex items-center font-semibold text-sm"
 				>
 					<ChevronLeft size={16} />
 					Back
 				</Link>
-				<h3 className="text-3xl w-full text-left text-nowrap">All Sermons</h3>
+				<h3 className="text-xl text-left text-nowrap">All Sermons</h3>
 			</div>
-			<div className="w-[93%] mt-8">
+			<div className="mt-8 lg:flex lg:flex-wrap lg:justify-center">
 				{sermons &&
 					sermons.map(({ title, _id, slug, mainImage }: SermonType) => (
 						<Link
@@ -36,8 +36,8 @@ export default async function AllSermonsPage() {
 							href={`/sermons/${slug?.current}`}
 							className="flex items-center justify-between py-2 px-4 rounded-md"
 						>
-							<Card className="w-full overflow-hidden">
-								<CardContent className="relative h-[12rem]">
+							<Card className="w-[23rem] h-[20rem] overflow-hidden">
+								<CardContent className="relative h-[15rem]">
 									<Image
 										fill
 										priority

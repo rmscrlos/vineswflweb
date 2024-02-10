@@ -14,10 +14,37 @@ export default async function SermonsPage() {
 	const recentSermons: SermonType[] = await fetchRecentSermons();
 
 	return (
-		<main className="flex min-h-screen flex-col pb-14 items-center">
-			<LatestSermon />
+		<main className="flex min-h-screen flex-col pb-14 items-center lg:max-w-7xl lg:mx-auto">
+			<div className="lg:w-full lg:h-[500px] lg:mb-10 flex lg:justify-center lg:gap-10">
+				<LatestSermon />
+				<div className="hidden lg:flex lg:flex-col lg:w-1/3 lg:justify-between">
+					{recentSermons &&
+						recentSermons
+							.slice(0, 2)
+							.map(
+								({ title, _id, slug: { current }, mainImage }: SermonType) => (
+									<div key={_id} className="">
+										<Link href={`/sermons/${current}`} className="relative">
+											<div className="w-full h-[235px] rounded-md transition-all duration-300 hover:-translate-y-1">
+												<Image
+													className="rounded-md"
+													fill
+													style={{ objectFit: "cover" }}
+													src={urlForImage(mainImage)}
+													alt={`${title}'s image`}
+												/>
+												<div className="absolute bottom-2 left-2">
+													<h3 className="text-white text-xl">{title}</h3>
+												</div>
+											</div>
+										</Link>
+									</div>
+								)
+							)}
+				</div>
+			</div>
 
-			<div className="w-[93%] mb-8">
+			<div className="w-[93%] mb-8 lg:hidden">
 				<h3 className="font-semibold text-xl mb-4">Recent Sermons</h3>
 				<Carousel>
 					<CarouselContent className="w-full">

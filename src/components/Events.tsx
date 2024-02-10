@@ -19,7 +19,7 @@ const Events: React.FC<EventsProps> = ({ events }) => {
 		}
 	}, [events]);
 	return (
-		<div className="my-10 hidden lg:block">
+		<div className="my-10">
 			{events &&
 				events.map(
 					({
@@ -34,8 +34,8 @@ const Events: React.FC<EventsProps> = ({ events }) => {
 						internalLink,
 						internalLinkName,
 					}: EventType) => (
-						<div key={_id} className="relative h-[450px] mb-8">
-							<div className="absolute w-full h-[450px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
+						<div key={_id} className="relative h-[250px] mb-8 lg:h-[450px]">
+							<div className="absolute w-full h-[250px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md lg:h-[450px]" />
 
 							<Image
 								className="rounded-md"
@@ -59,13 +59,13 @@ const Events: React.FC<EventsProps> = ({ events }) => {
 										<>
 											<Link
 												href={`/${internalLink}`}
-												className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
+												className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 											>
 												{internalLinkName}
 											</Link>
 											<Link
 												href={externalLink}
-												className="text-black bg-white rounded-md px-5 py-2 lg:text-lg"
+												className="text-black bg-white rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 											>
 												{externalLinkName}
 											</Link>
@@ -73,14 +73,14 @@ const Events: React.FC<EventsProps> = ({ events }) => {
 									) : internalLink ? (
 										<Link
 											href={`/${internalLink}`}
-											className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
+											className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 										>
 											{internalLinkName}
 										</Link>
 									) : externalLink ? (
 										<Link
 											href={externalLink}
-											className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
+											className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 										>
 											{externalLinkName}
 										</Link>

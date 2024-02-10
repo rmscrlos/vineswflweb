@@ -50,13 +50,13 @@ export default async function Home() {
 					</h2>
 					<div className="flex flex-col justify-center items-center gap-2 text-center lg:flex-row lg:gap-4">
 						<Link
-							className="bg-vinegreen text-white font-semibold w-full py-2 rounded-md lg:py-3 lg:w-3/4"
+							className="bg-vinegreen text-white font-semibold w-full py-2 rounded-md lg:py-3 lg:w-3/4 lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 							href={`/sermons/${current}`}
 						>
 							Watch Now
 						</Link>
 						<Link
-							className="w-full py-2 font-semibold bg-white rounded-md lg:py-3 lg:w-3/4"
+							className="w-full py-2 font-semibold bg-white rounded-md lg:py-3 lg:w-3/4 lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 							href="/sermons"
 						>
 							Other Sermons
@@ -68,7 +68,6 @@ export default async function Home() {
 			<div className="w-full flex flex-col items-center lg:flex-row lg:h-full lg:items-start lg:gap-20">
 				<div className="w-[93%] my-10 lg:w-[80%]">
 					<h2 className="text-3xl text-left font-semibold mb-6">Events</h2>
-					{events && <EventsCarousel events={events} />}
 					{events && <Events events={events} />}
 
 					{lifeGroupImageUrl && (
@@ -94,7 +93,7 @@ export default async function Home() {
 								<div className="flex items-center gap-2">
 									<Link
 										href="https://vineswfl.churchcenter.com/groups"
-										className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg"
+										className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
 									>
 										Join A LifeGroup
 									</Link>
@@ -104,7 +103,7 @@ export default async function Home() {
 					)}
 				</div>
 
-				<div className="flex flex-col items-center lg:my-10">
+				<div className="flex w-[93%] flex-col items-center lg:my-10 lg:w-auto">
 					<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
 						<div>
 							<h3 className="text-xl font-semibold">Get Involved</h3>

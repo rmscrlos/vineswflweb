@@ -13,9 +13,9 @@ const LatestSermon: React.FC = async () => {
 	}: SermonType = await fetchLatestSermon();
 	const latestSermonImage = urlForImage(mainImage);
 	return (
-		<Link href={`/sermons/${current}`}>
-			<div className="mx-4 relative w-[360px] h-[360px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] mb-8">
-				<div className="absolute w-[360px] h-[360px] bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md" />
+		<Link href={`/sermons/${current}`} className="lg:w-2/4">
+			<div className="mx-4 relative w-[360px] h-[360px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] mb-8 lg:w-full lg:h-full lg:mx-0 lg:transition-all lg:duration-300 lg:hover:-translate-y-1">
+				<div className="absolute w-[360px] h-[360px] bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md lg:h-full" />
 				<Image
 					className="rounded-md"
 					style={{ objectFit: "cover" }}
@@ -24,14 +24,8 @@ const LatestSermon: React.FC = async () => {
 					priority
 					alt={`${title}'s image`}
 				/>
-				<div className="absolute bottom-0 z-[2] w-full p-4">
+				<div className="absolute bottom-0 z-[2] w-full p-4 lg:w-3/4">
 					<p className="text-white bg-white/[.3] rounded-xl font-light text-[.75rem] text-center w-[33%] py-0.5 mb-1">
-						Latest Sermon
-					</p>
-					<h2 className="text-3xl font-semibold text-white mb-2">{title}</h2>
-				</div>
-				<div className="absolute bottom-0 z-[2] w-full p-4">
-					<p className="text-white bg-white/[.3] rounded-xl font-semibold text-[.75rem] text-center w-[33%] py-0.5 mb-1">
 						Latest Sermon
 					</p>
 					<h2 className="text-3xl font-semibold text-white mb-2">{title}</h2>
