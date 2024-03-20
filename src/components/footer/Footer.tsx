@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ExternalLink, Instagram, Youtube } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 
 const Footer: React.FC = () => {
 	return (

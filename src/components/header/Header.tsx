@@ -1,8 +1,20 @@
+"use client";
+
+import { useEffect } from "react";
 import MobileMenu from "@/components/mobilemenu/MobileMenu";
 import Link from "next/link";
 import Navbar from "../Navbar";
+import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
+	const { theme, setTheme } = useTheme();
+	const pathname = usePathname();
+	useEffect(() => {
+		if (theme === "dark" && !pathname.startsWith("/sermons/")) {
+			setTheme("light");
+		}
+	}, [theme, setTheme, pathname]);
 	return (
 		<header className="flex justify-between items-center px-3 h-[6rem] lg:max-w-7xl lg:mx-auto">
 			<Link href="/">

@@ -31,12 +31,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function SermonPage() {
 	const [open, setOpen] = useState(false);
 	const [sermon, setSermon] = useState<SermonType | null>(null);
-	const { setTheme } = useTheme();
+	const { setTheme, theme } = useTheme();
 	const { slug } = useParams();
 	const publishedDate = new Date(sermon?.publishedAt || "").toLocaleDateString(
 		"en-US",
 		{ year: "numeric", month: "long", day: "numeric" }
 	);
+
+	console.log({ theme });
 
 	useEffect(() => {
 		setTheme("dark");
