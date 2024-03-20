@@ -14,6 +14,8 @@ import { SermonType, fetchLatestSermon } from "@/api/sermons";
 import { EventType, fetchEvents } from "@/api/events";
 import Events from "@/components/Events";
 import { fetchImageByTitle } from "@/api/images";
+import QuickLinksCard from "@/components/QuickLinksCard";
+import CtaLink from "@/components/CtaLink";
 
 export default async function Home() {
 	const {
@@ -48,24 +50,22 @@ export default async function Home() {
 						{title}
 					</h2>
 					<div className="flex flex-col justify-center items-center gap-2 text-center lg:flex-row lg:gap-4">
-						<Link
-							className="bg-vinegreen text-white font-semibold w-full py-2 rounded-md lg:py-3 lg:w-3/4 lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
+						<CtaLink
+							className="bg-vinegreen text-white font-semibold w-full py-2 rounded-md lg:py-3 lg:w-3/4"
+							linkTitle="Watch Now"
 							href={`/sermons/${current}`}
-						>
-							Watch Now
-						</Link>
-						<Link
-							className="w-full py-2 font-semibold bg-white rounded-md lg:py-3 lg:w-3/4 lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
+						/>
+						<CtaLink
+							className="w-full py-2 font-semibold bg-white rounded-md lg:py-3 lg:w-3/4"
 							href="/sermons"
-						>
-							Other Sermons
-						</Link>
+							linkTitle="Other Sermons"
+						/>
 					</div>
 				</div>
 			</div>
 
-			<div className="w-full flex flex-col items-center lg:flex-row lg:h-full lg:items-start lg:gap-20">
-				<div className="w-[93%] my-10 lg:w-[80%]">
+			<div className="w-full flex flex-col items-center lg:flex-row lg:h-full lg:items-start lg:gap-10">
+				<div className="w-[93%] my-10 lg:flex-1">
 					<h2 className="text-3xl text-left font-semibold mb-6">Events</h2>
 					{events && <Events events={events} />}
 
@@ -103,90 +103,88 @@ export default async function Home() {
 				</div>
 
 				<div className="flex w-[93%] flex-col items-center lg:my-10 lg:w-auto">
-					<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
-						<div>
-							<h3 className="text-xl font-semibold">Get Involved</h3>
-							<p className="text-black/40">See what God can do through you.</p>
-						</div>
-						<div className="flex flex-col">
-							<Link
-								href="/give"
-								className="flex items-center gap-2 mb-6 font-medium"
-							>
-								<HelpingHand size={20} />
-								Giving
-							</Link>
-							<Link
-								href="https://vineswfl.churchcenter.com/groups"
-								className="flex items-center justify-between mb-6 font-medium"
-							>
-								<div className="flex items-center gap-2">
-									<HomeIcon size={20} />
-									LifeGroups
-								</div>
-								<ExternalLink size={18} className="opacity-40" />
-							</Link>
-							<Link
-								href="/grow"
-								className="flex items-center gap-2 font-medium"
-							>
-								<Route size={20} />
-								Growth Track
-							</Link>
-						</div>
+					<div className="mb-4 w-full">
+						<QuickLinksCard
+							title="Get Involved"
+							description="See what God can do through you."
+						>
+							<div className="flex flex-col">
+								<Link
+									href="/give"
+									className="flex items-center gap-2 mb-6 font-medium"
+								>
+									<HelpingHand size={20} />
+									Giving
+								</Link>
+								<Link
+									href="https://vineswfl.churchcenter.com/groups"
+									className="flex items-center justify-between mb-6 font-medium"
+								>
+									<div className="flex items-center gap-2">
+										<HomeIcon size={20} />
+										LifeGroups
+									</div>
+									<ExternalLink size={18} className="opacity-40" />
+								</Link>
+								<Link
+									href="/grow"
+									className="flex items-center gap-2 font-medium"
+								>
+									<Route size={20} />
+									Growth Track
+								</Link>
+							</div>
+						</QuickLinksCard>
 					</div>
 
 					{/* COMMENTING THIS OUT FOR NOW UNTIL PAGES ARE MADE */}
-					{/* <div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
-						<div>
-							<h3 className="text-xl font-semibold">For Your Family</h3>
-							<p className="text-black/40">
-								See what God can do through your family.
-							</p>
-						</div>
-						<div className="flex flex-col">
-							<Link
-								href="/vinekids"
-								className="flex items-center justify-between mb-6 font-medium"
-							>
-								<div className="flex items-center gap-2">VineKids</div>
-							</Link>
-							<Link
-								href="/enjoy"
-								className="flex items-center gap-2 font-medium"
-							>
-								Enjoy YTH
-							</Link>
-						</div>
+					{/* <div className="w-full mb-4">
+						<QuickLinksCard
+							title="For Your Family"
+							description="See what God can do through your family."
+						>
+							<div className="flex flex-col">
+								<Link
+									href="/vinekids"
+									className="flex items-center justify-between mb-6 font-medium"
+								>
+									<div className="flex items-center gap-2">VineKids</div>
+								</Link>
+								<Link
+									href="/enjoy"
+									className="flex items-center gap-2 font-medium"
+								>
+									Enjoy YTH
+								</Link>
+							</div>
+						</QuickLinksCard>
 					</div> */}
 
-					<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px]">
-						<div>
-							<h3 className="text-xl font-semibold">Follow On Social</h3>
-						</div>
-
-						<div className="flex flex-col">
-							<Link
-								href="https://www.youtube.com/@vineswfl.church"
-								className="flex items-center justify-between mb-6 font-medium"
-							>
-								<div className="flex items-center gap-2">
-									<Youtube />
-									YouTube
-								</div>
-								<ExternalLink size={20} className="opacity-40" />
-							</Link>
-							<Link
-								href="https://www.instagram.com/vineswfl.church/"
-								className="flex items-center justify-between font-medium"
-							>
-								<div className="flex items-center gap-2">
-									<Instagram />
-									Instagram
-								</div>
-								<ExternalLink size={20} className="opacity-40" />
-							</Link>
-						</div>
+					<div className="w-full">
+						<QuickLinksCard title="Follow On Social">
+							<div className="flex flex-col">
+								<Link
+									href="https://www.youtube.com/@vineswfl.church"
+									className="flex items-center justify-between mb-6 font-medium"
+								>
+									<div className="flex items-center gap-2">
+										<Youtube />
+										YouTube
+									</div>
+									<ExternalLink size={20} className="opacity-40" />
+								</Link>
+								<Link
+									href="https://www.instagram.com/vineswfl.church/"
+									className="flex items-center justify-between font-medium"
+								>
+									<div className="flex items-center gap-2">
+										<Instagram />
+										Instagram
+									</div>
+									<ExternalLink size={20} className="opacity-40" />
+								</Link>
+							</div>
+						</QuickLinksCard>
 					</div>
 				</div>
 			</div>

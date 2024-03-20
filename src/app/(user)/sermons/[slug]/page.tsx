@@ -6,39 +6,20 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import ReactPlayer from "react-player";
 import { PortableText } from "@portabletext/react";
-import {
-	Facebook,
-	Files,
-	Instagram,
-	MoreHorizontal,
-	Twitter,
-	Youtube,
-	HelpingHand,
-} from "lucide-react";
+import { HelpingHand } from "lucide-react";
 
-import {
-	Drawer,
-	DrawerContent,
-	DrawerDescription,
-	DrawerHeader,
-	DrawerTitle,
-	DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
 import { SermonType, fetchSermonBySlug } from "@/api/sermons";
 import { Skeleton } from "@/components/ui/skeleton";
+import ShareSermon from "@/components/ShareSermon";
 
 export default function SermonPage() {
-	const [open, setOpen] = useState(false);
 	const [sermon, setSermon] = useState<SermonType | null>(null);
-	const { setTheme, theme } = useTheme();
+	const { setTheme } = useTheme();
 	const { slug } = useParams();
 	const publishedDate = new Date(sermon?.publishedAt || "").toLocaleDateString(
 		"en-US",
 		{ year: "numeric", month: "long", day: "numeric" }
 	);
-
-	console.log({ theme });
 
 	useEffect(() => {
 		setTheme("dark");
@@ -51,16 +32,17 @@ export default function SermonPage() {
 		fetchSermonBySlug(slug).then((res: any) => setSermon(res[0]));
 	}, [slug]);
 
-	const handleCopy = () => {
-		navigator.clipboard.writeText("HELLO WORLD!");
-	};
-
 	return (
-		<main className="flex min-h-screen flex-col pb-14 mx-4">
+		<main className="flex min-h-screen flex-col pb-14 mx-4 lg:max-w-6xl lg:mx-auto">
 			{sermon ? (
 				<div>
-					<div className="overflow-hidden rounded-lg mb-2">
-						<ReactPlayer url={sermon.videoLink} controls width="100%" />
+					<div className="overflow-hidden rounded-lg mb-2 h-[360px] lg:h-[600px]">
+						<ReactPlayer
+							url={sermon.videoLink}
+							controls
+							width="100%"
+							height="100%"
+						/>
 					</div>
 
 					<div className="flex flex-col mb-6">
@@ -74,7 +56,7 @@ export default function SermonPage() {
 			) : (
 				<div>
 					<div className="mb-4">
-						<Skeleton className="w-[358px] h-[360px] rounded-md" />
+						<Skeleton className="w-[358px] h-[360px] rounded-md lg:w-full lg:h-[600px]" />
 					</div>
 					<div className="flex flex-col gap-2 mb-10">
 						<Skeleton className="w-[200px] h-6 rounded-md" />
@@ -97,75 +79,10 @@ export default function SermonPage() {
 					</div>
 				</Link>
 
-				<Drawer open={open} onOpenChange={setOpen}>
-					<DrawerTrigger asChild>
-						<Button
-							variant="outline"
-							className="flex items-center gap-2 flex-col h-fit rounded-full p-2 border-2 "
-						>
-							<MoreHorizontal />
-						</Button>
-					</DrawerTrigger>
-					<DrawerContent className="">
-						<DrawerHeader className="text-left flex flex-col gap-10">
-							<div>
-								<div className="mb-4">
-									<DrawerTitle className="text-xl">Share</DrawerTitle>
-									<p className="text-xs text-white/[.7]">
-										Share on your social medias or copy the link
-									</p>
-								</div>
-								<DrawerDescription>
-									<div className="flex items-center gap-8">
-										<Link
-											href="#"
-											className="flex items-center border-white/[.3] border rounded-full p-3"
-										>
-											<Twitter size={26} />
-										</Link>
-										<Link
-											href="#"
-											className="flex items-center border-white/[.3] border rounded-full p-3"
-										>
-											<Facebook size={26} />
-										</Link>
-										<button
-											onClick={handleCopy}
-											className="flex items-center border-white/[.3] border rounded-full p-3"
-										>
-											<Files size={26} />
-										</button>
-									</div>
-								</DrawerDescription>
-							</div>
-							<div>
-								<div className="mb-4">
-									<DrawerTitle className="text-xl">Follow us</DrawerTitle>
-									<p className="text-xs text-white/[.7]">
-										Follow us on our social medias
-									</p>
-								</div>
-								<DrawerDescription className="flex items-center gap-8">
-									<Link
-										href="https://www.youtube.com/@vineswfl.church"
-										className="flex items-center border-white/[.3] border rounded-full p-3"
-									>
-										<Youtube />
-									</Link>
-									<Link
-										href="https://www.instagram.com/vineswfl.church/"
-										className="flex items-center border-white/[.3] border rounded-full p-3"
-									>
-										<Instagram />
-									</Link>
-								</DrawerDescription>
-							</div>
-						</DrawerHeader>
-					</DrawerContent>
-				</Drawer>
+				<ShareSermon />
 			</div>
 
-			<div className="bg-white/[.1] rounded-md p-8 flex- justify-center items-center text-center">
+			<div className="bg-white/[.1] rounded-md p-8 flex- justify-center items-center text-center lg:mx-auto lg:w-[40%]">
 				<h3 className="mb-4 font-medium text-lg">
 					Want to take what you&apos;ve learn from learned from this sermon to
 					the next level?

@@ -15,7 +15,7 @@ const LatestSermon: React.FC = async () => {
 	return (
 		<Link href={`/sermons/${current}`} className="lg:w-2/4">
 			<div className="mx-4 relative w-[360px] h-[360px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] mb-8 lg:w-full lg:h-full lg:mx-0 lg:transition-all lg:duration-300 lg:hover:-translate-y-1">
-				<div className="absolute w-[360px] h-[360px] bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md lg:h-full" />
+				<div className="absolute w-full h-full bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md" />
 				<Image
 					className="rounded-md"
 					style={{ objectFit: "cover" }}

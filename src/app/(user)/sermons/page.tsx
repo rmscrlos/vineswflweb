@@ -9,6 +9,7 @@ import {
 import { urlForImage } from "../../../../sanity/lib/image";
 import LatestSermon from "@/components/LatestSermon";
 import { fetchRecentSermons, SermonType } from "@/api/sermons";
+import CtaLink from "@/components/CtaLink";
 
 export default async function SermonsPage() {
 	const recentSermons: SermonType[] = await fetchRecentSermons();
@@ -77,12 +78,11 @@ export default async function SermonsPage() {
 				</Carousel>
 			</div>
 			<div className="h-44 flex justify-center items-center">
-				<Link
+				<CtaLink
 					href="/sermons/all"
 					className="bg-vinedarkgray text-white rounded-md py-2 px-10 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]"
-				>
-					View All Sermons
-				</Link>
+					linkTitle="View All Sermons"
+				/>
 			</div>
 		</main>
 	);
