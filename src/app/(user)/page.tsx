@@ -136,7 +136,8 @@ export default async function Home() {
 						</div>
 					</div>
 
-					<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
+					{/* COMMENTING THIS OUT FOR NOW UNTIL PAGES ARE MADE */}
+					{/* <div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px] mb-6">
 						<div>
 							<h3 className="text-xl font-semibold">For Your Family</h3>
 							<p className="text-black/40">
@@ -157,7 +158,7 @@ export default async function Home() {
 								Enjoy YTH
 							</Link>
 						</div>
-					</div>
+					</div> */}
 
 					<div className="flex flex-col px-4 py-4 justify-center gap-4 bg-white w-[98%] rounded-md shadow-[rgba(17,_17,_26,_0.1)_0px_10px_16px]">
 						<div>
