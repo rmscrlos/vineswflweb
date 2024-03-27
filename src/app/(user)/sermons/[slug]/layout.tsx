@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { fetchSermonBySlug } from "@/api/sermons";
-import { urlForImage } from "../../../../../sanity/lib/image";
+import { fetchSermonBySlug } from "api/sermons";
+import { urlForImage } from "sanity/lib/image";
 
 type Props = {
 	params: { slug: string };
@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 interface LayoutProps {
-	title: string;
 	children: React.ReactNode;
 }
 
