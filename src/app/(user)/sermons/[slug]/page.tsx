@@ -21,6 +21,8 @@ export default function SermonPage() {
 		{ year: "numeric", month: "long", day: "numeric" }
 	);
 
+	const sermonUrl = `https://www.vineswfl.church/sermons/${slug}`;
+
 	useEffect(() => {
 		setTheme("dark");
 		return () => {
@@ -29,7 +31,7 @@ export default function SermonPage() {
 	}, [setTheme]);
 
 	useEffect(() => {
-		fetchSermonBySlug(slug).then((res: any) => setSermon(res[0]));
+		fetchSermonBySlug(slug).then((res: any) => setSermon(res));
 	}, [slug]);
 
 	return (
@@ -79,7 +81,7 @@ export default function SermonPage() {
 					</div>
 				</Link>
 
-				<ShareSermon />
+				<ShareSermon sermonTitle={sermon?.title} sermonUrl={sermonUrl} />
 			</div>
 
 			<div className="bg-white/[.1] rounded-md p-8 flex- justify-center items-center text-center lg:mx-auto lg:w-[40%]">

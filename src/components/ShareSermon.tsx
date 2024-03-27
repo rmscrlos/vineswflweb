@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import {
 	Drawer,
+	DrawerClose,
 	DrawerContent,
 	DrawerDescription,
 	DrawerHeader,
@@ -24,24 +25,41 @@ import {
 	Files,
 	Instagram,
 	MoreHorizontal,
+	Share,
 	Twitter,
 	Youtube,
 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 interface ShareSermonProps {
-	open: boolean;
-	setOpen: (open: boolean) => void;
+	sermonTitle: string | undefined;
+	sermonUrl?: string | undefined;
 }
 
-function ShareSermon() {
+function ShareSermon({ sermonTitle, sermonUrl }: ShareSermonProps) {
 	const [open, setOpen] = useState(false);
+	const { toast } = useToast();
 
 	const isDesktop = useMediaQuery("(min-width: 768px)");
+	const isNavigator = typeof navigator.share !== "undefined";
+	const facebookShare = `https://www.facebook.com/sharer.php?u=${sermonUrl}`;
+	const twitterShare = `https://twitter.com/intent/post?text=Watch "${sermonTitle}" from Vines Church.&url=${sermonUrl}`;
 
-	const handleCopy = () => {
-		navigator.clipboard.writeText(window.location.href);
-		setOpen(false);
+	const handleCopy = async () => {
+		if (navigator.share) {
+			await navigator.share({
+				url: window.location.href,
+			});
+		} else {
+			navigator.clipboard.writeText(window.location.href);
+			setOpen(false);
+			toast({
+				description: "Sermon link has been copied! 🎉",
+			});
+		}
 	};
 
 	if (isDesktop) {
@@ -64,27 +82,31 @@ function ShareSermon() {
 									Share on your social medias or copy the link
 								</p>
 							</div>
-							<DialogDescription>
-								<div className="flex items-center gap-8">
+							<DialogDescription className="flex items-center gap-8">
+								<DialogClose>
 									<Link
-										href="#"
+										href={twitterShare}
 										className="flex items-center border-white/[.3] border rounded-full p-3"
+										target="_blank"
 									>
 										<Twitter size={26} />
 									</Link>
+								</DialogClose>
+								<DialogClose>
 									<Link
-										href="#"
+										href={facebookShare}
 										className="flex items-center border-white/[.3] border rounded-full p-3"
+										target="_blank"
 									>
 										<Facebook size={26} />
 									</Link>
-									<button
-										onClick={handleCopy}
-										className="flex items-center border-white/[.3] border rounded-full p-3"
-									>
-										<Files size={26} />
-									</button>
-								</div>
+								</DialogClose>
+								<DialogClose
+									onClick={handleCopy}
+									className="flex items-center border-white/[.3] border rounded-full p-3"
+								>
+									{!isNavigator ? <Files size={26} /> : <Share size={26} />}
+								</DialogClose>
 							</DialogDescription>
 						</div>
 						<div>
@@ -98,12 +120,14 @@ function ShareSermon() {
 								<Link
 									href="https://www.youtube.com/@vineswfl.church"
 									className="flex items-center border-white/[.3] border rounded-full p-3"
+									target="_blank"
 								>
 									<Youtube />
 								</Link>
 								<Link
 									href="https://www.instagram.com/vineswfl.church/"
 									className="flex items-center border-white/[.3] border rounded-full p-3"
+									target="_blank"
 								>
 									<Instagram />
 								</Link>
@@ -134,27 +158,29 @@ function ShareSermon() {
 								Share on your social medias or copy the link
 							</p>
 						</div>
-						<DrawerDescription>
-							<div className="flex items-center gap-8">
+						<DrawerDescription className="flex items-center gap-8">
+							<DrawerClose>
 								<Link
-									href="#"
+									href={twitterShare}
 									className="flex items-center border-white/[.3] border rounded-full p-3"
 								>
 									<Twitter size={26} />
 								</Link>
+							</DrawerClose>
+							<DrawerClose>
 								<Link
-									href="#"
 									className="flex items-center border-white/[.3] border rounded-full p-3"
+									href={facebookShare}
 								>
 									<Facebook size={26} />
 								</Link>
-								<button
-									onClick={handleCopy}
-									className="flex items-center border-white/[.3] border rounded-full p-3"
-								>
-									<Files size={26} />
-								</button>
-							</div>
+							</DrawerClose>
+							<DrawerClose
+								onClick={handleCopy}
+								className="flex items-center border-white/[.3] border rounded-full p-3"
+							>
+								<Files size={26} />
+							</DrawerClose>
 						</DrawerDescription>
 					</div>
 					<div>

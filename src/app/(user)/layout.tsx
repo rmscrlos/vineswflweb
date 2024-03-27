@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -32,6 +33,7 @@ export default function RootLayout({
 					<Footer />
 				</ThemeProvider>
 				<SpeedInsights />
+				<Toaster />
 			</body>
 		</html>
 	);

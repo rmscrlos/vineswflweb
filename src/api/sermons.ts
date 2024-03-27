@@ -67,19 +67,19 @@ export const fetchRecentSermons = async () => {
 
 export const fetchSermonBySlug = async (
 	slug: string | string[] | undefined
-) => {
-	if (!slug) {
-		return null;
-	}
+): Promise<SermonType> => {
 	const query = `*[_type == "sermon" && !(_id in path("drafts.**")) && slug.current == "${slug}"] {
 		title,
 		videoLink,
 		_id,
 		publishedAt,
+		mainImage,
 		body
 	}`;
 
-	const sermon: SermonType = await client.fetch(query, { slug });
+	const sermon: SermonType = await client
+		.fetch(query, { slug })
+		.then((res) => res[0]);
 
 	return sermon;
 };
