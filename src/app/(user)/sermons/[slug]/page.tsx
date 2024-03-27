@@ -34,10 +34,6 @@ export default function SermonPage() {
 		fetchSermonBySlug(slug).then((res: any) => setSermon(res));
 	}, [slug]);
 
-	if (!sermon) {
-		return null;
-	}
-
 	return (
 		<main className="flex min-h-screen flex-col pb-14 mx-4 lg:max-w-6xl lg:mx-auto">
 			{sermon ? (
@@ -88,18 +84,20 @@ export default function SermonPage() {
 				<ShareSermon sermonTitle={sermon?.title} sermonUrl={sermonUrl} />
 			</div>
 
-			<div className="bg-white/[.1] rounded-md p-8 flex- justify-center items-center text-center lg:mx-auto lg:w-[40%]">
-				<h3 className="mb-4 font-medium text-lg">
-					Want to take what you&apos;ve learn from learned from this sermon to
-					the next level?
-				</h3>
-				<Link
-					className="bg-white text-darkbg px-4 py-2 rounded-md uppercase text-xs font-medium"
-					href={sermon.sermonSummary}
-				>
-					View Discussion Questions
-				</Link>
-			</div>
+			{sermon?.sermonSummary && (
+				<div className="bg-white/[.1] rounded-md p-8 flex- justify-center items-center text-center lg:mx-auto lg:w-[40%]">
+					<h3 className="mb-4 font-medium text-lg">
+						Want to take what you&apos;ve learn from learned from this sermon to
+						the next level?
+					</h3>
+					<Link
+						className="bg-white text-darkbg px-4 py-2 rounded-md uppercase text-xs font-medium"
+						href={sermon.sermonSummary}
+					>
+						View Discussion Questions
+					</Link>
+				</div>
+			)}
 		</main>
 	);
 }
