@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	};
 }
 
-type LayoutProps = {
+interface LayoutProps {
 	title: string;
 	children: React.ReactNode;
-};
+}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
 	return <section>{children}</section>;
