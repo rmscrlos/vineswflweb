@@ -1,5 +1,5 @@
-import { Image, TypedObject } from "sanity";
-import { client } from "../../sanity/lib/client";
+import { File, Image, TypedObject } from "sanity";
+import { client } from "sanity/lib/client";
 
 export type SermonType = {
 	_id: string;
@@ -11,6 +11,7 @@ export type SermonType = {
 	publishedAt?: string;
 	videoLink?: string;
 	body?: TypedObject;
+	sermonSummary: string;
 };
 
 export const fetchSermons = async () => {
@@ -74,12 +75,14 @@ export const fetchSermonBySlug = async (
 		_id,
 		publishedAt,
 		mainImage,
-		body
+		body,
+		"sermonSummary": sermonSummary.asset->url
 	}`;
 
 	const sermon: SermonType = await client
 		.fetch(query, { slug })
 		.then((res) => res[0]);
 
+	console.log({ sermon });
 	return sermon;
 };

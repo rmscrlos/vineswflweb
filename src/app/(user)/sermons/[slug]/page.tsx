@@ -8,9 +8,9 @@ import ReactPlayer from "react-player";
 import { PortableText } from "@portabletext/react";
 import { HelpingHand } from "lucide-react";
 
-import { SermonType, fetchSermonBySlug } from "@/api/sermons";
-import { Skeleton } from "@/components/ui/skeleton";
-import ShareSermon from "@/components/ShareSermon";
+import { SermonType, fetchSermonBySlug } from "api/sermons";
+import { Skeleton } from "components/ui/skeleton";
+import ShareSermon from "components/ShareSermon";
 
 export default function SermonPage() {
 	const [sermon, setSermon] = useState<SermonType | null>(null);
@@ -33,6 +33,10 @@ export default function SermonPage() {
 	useEffect(() => {
 		fetchSermonBySlug(slug).then((res: any) => setSermon(res));
 	}, [slug]);
+
+	if (!sermon) {
+		return null;
+	}
 
 	return (
 		<main className="flex min-h-screen flex-col pb-14 mx-4 lg:max-w-6xl lg:mx-auto">
@@ -91,7 +95,7 @@ export default function SermonPage() {
 				</h3>
 				<Link
 					className="bg-white text-darkbg px-4 py-2 rounded-md uppercase text-xs font-medium"
-					href="#"
+					href={sermon.sermonSummary}
 				>
 					View Discussion Questions
 				</Link>

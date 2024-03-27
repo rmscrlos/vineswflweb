@@ -50,7 +50,12 @@ const sermonsSchema = {
 			name: "body",
 			title: "Body",
 			type: "blockContent",
-			validation: (Rule: any) => Rule.required(),
+			validation: (Rule: any) => Rule.required().max(500),
+		},
+		{
+			title: "Sermon LifeGroup Summary",
+			name: "sermonSummary",
+			type: "file",
 		},
 	],
 
