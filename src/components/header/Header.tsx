@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 		}
 	}, [theme, setTheme, pathname]);
 	return (
-		<header className="flex justify-between items-center px-3 h-[6rem] lg:max-w-7xl lg:mx-auto">
+		<header className="flex justify-between items-center px-3 h-[6rem] lg:max-w-6xl lg:mx-auto lg:mb-4">
 			<Link href="/">
 				<h1 className="uppercase text-lg">
 					Vine <span className="font-bold text-vinegreen">Church</span>

@@ -18,6 +18,7 @@ import Events from "@/components/Events";
 import { fetchImageByTitle } from "@/api/images";
 import QuickLinksCard from "@/components/QuickLinksCard";
 import CtaLink from "@/components/CtaLink";
+import Announcement from "common/announcement/Announcement";
 
 export default async function Home() {
 	const {
@@ -34,8 +35,10 @@ export default async function Home() {
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between pb-14 lg:max-w-6xl lg:mx-auto">
-			<div className="mx-4 relative w-[360px] h-[560px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] lg:w-full lg:h-[700px]">
-				<div className="absolute w-[360px] h-[560px] bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md lg:w-full lg:h-[700px]" />
+			<Announcement />
+
+			<div className="mx-4 relative w-[93%] h-[560px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] lg:w-full lg:h-[700px]">
+				<div className="absolute w-full h-full bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md" />
 				<Image
 					className="rounded-md"
 					style={{ objectFit: "cover" }}
@@ -131,7 +134,7 @@ export default async function Home() {
 							<div className="flex flex-col">
 								<Link
 									href="/give"
-									className="flex items-center gap-2 mb-1 font-medium py-2 px-1 rounded-lg hover:bg-vinegreen/10"
+									className="flex items-center gap-2 mb-1 font-medium py-2 px-2 rounded-lg hover:bg-vinegreen/10"
 								>
 									<HelpingHand size={20} />
 									Giving
@@ -148,7 +151,7 @@ export default async function Home() {
 								</Link>
 								<Link
 									href="/grow"
-									className="flex items-center gap-2 font-medium  py-2 px-1 rounded-lg hover:bg-vinegreen/10"
+									className="flex items-center gap-2 font-medium  py-2 px-2 rounded-lg hover:bg-vinegreen/10"
 								>
 									<Route size={20} />
 									Growth Track
@@ -157,8 +160,7 @@ export default async function Home() {
 						</QuickLinksCard>
 					</div>
 
-					{/* COMMENTING THIS OUT FOR NOW UNTIL PAGES ARE MADE */}
-					{/* <div className="w-full mb-4">
+					<div className="w-full mb-4">
 						<QuickLinksCard
 							title="For Your Family"
 							description="See what God can do through your family."
@@ -172,20 +174,20 @@ export default async function Home() {
 								</Link>
 								<Link
 									href="/enjoy"
-									className="flex items-center gap-2 font-medium py-2 px-1 rounded-lg hover:bg-vinegreen/10"
+									className="flex items-center gap-2 font-medium py-2 px-2 rounded-lg hover:bg-vinegreen/10"
 								>
 									Enjoy YTH
 								</Link>
 							</div>
 						</QuickLinksCard>
-					</div> */}
+					</div>
 
 					<div className="w-full">
 						<QuickLinksCard title="Follow On Social">
 							<div className="flex flex-col">
 								<Link
 									href="https://www.youtube.com/@vineswfl.church"
-									className="flex items-center justify-between mb-1 font-medium py-2 px-1 rounded-lg hover:bg-vinegreen/10"
+									className="flex items-center justify-between mb-1 font-medium py-2 px-2 rounded-lg hover:bg-vinegreen/10"
 								>
 									<div className="flex items-center gap-2">
 										<Youtube />
@@ -195,7 +197,7 @@ export default async function Home() {
 								</Link>
 								<Link
 									href="https://www.instagram.com/vineswfl.church/"
-									className="flex items-center justify-between font-medium py-2 px-1 rounded-lg hover:bg-vinegreen/10"
+									className="flex items-center justify-between font-medium py-2 px-2 rounded-lg hover:bg-vinegreen/10"
 								>
 									<div className="flex items-center gap-2">
 										<Instagram />

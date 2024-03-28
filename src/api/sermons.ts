@@ -83,6 +83,5 @@ export const fetchSermonBySlug = async (
 		.fetch(query, { slug })
 		.then((res) => res[0]);
 
-	console.log({ sermon });
 	return sermon;
 };

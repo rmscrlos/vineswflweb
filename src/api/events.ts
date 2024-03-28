@@ -15,7 +15,7 @@ export type EventType = {
 };
 
 export const fetchEvents = async () => {
-	const query = `*[_type == 'events']{
+	const query = `*[_type == 'events' && !(_id in path("drafts.**"))]{
         _id,
         title,
         description,
