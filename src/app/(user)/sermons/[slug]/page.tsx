@@ -8,9 +8,9 @@ import ReactPlayer from "react-player";
 import { PortableText } from "@portabletext/react";
 import { HelpingHand } from "lucide-react";
 
-import { SermonType, fetchSermonBySlug } from "api/sermons";
+import { SermonType, fetchSermonBySlug } from "@/app/api/sermons";
 import { Skeleton } from "components/ui/skeleton";
-import ShareSermon from "components/ShareSermon";
+import ShareSermon from "@/components/common/ShareSermon";
 
 export default function SermonPage() {
 	const [sermon, setSermon] = useState<SermonType | null>(null);

@@ -4,9 +4,9 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { EventType, deleteEvent } from "@/api/events";
+import { EventType, deleteEvent } from "@/app/api/events";
 import { displayDate } from "@/lib/utils";
-import { urlForImage } from "../../sanity/lib/image";
+import { urlForImage } from "../../../sanity/lib/image";
 
 interface EventsProps {
 	events: EventType[];

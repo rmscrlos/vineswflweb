@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import MobileMenu from "@/components/mobilemenu/MobileMenu";
 import Link from "next/link";
-import Navbar from "../Navbar";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+
+import Navbar from "common/Navbar";
+import MobileMenu from "components/mobilemenu/MobileMenu";
 
 const Header: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -25,7 +26,7 @@ const Header: React.FC = () => {
 			<div className="hidden lg:block">
 				<Navbar />
 			</div>
-			<div className="sm:hidden">
+			<div className="flex gap-4 items-center lg:hidden">
 				<MobileMenu />
 			</div>
 		</header>

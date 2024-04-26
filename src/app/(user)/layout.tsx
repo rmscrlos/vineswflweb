@@ -8,6 +8,7 @@ import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
+import { YoutubeType } from "types/youtube";
 
 const poppins = Poppins({
 	subsets: ["devanagari", "latin-ext", "latin"],

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
 	ChevronRight,
@@ -11,23 +10,18 @@ import {
 	Youtube,
 } from "lucide-react";
 
-import { urlForImage } from "../../../sanity/lib/image";
-import { SermonType, fetchLatestSermon } from "@/api/sermons";
-import { EventType, fetchEvents } from "@/api/events";
-import Events from "@/components/Events";
-import { fetchImageByTitle } from "@/api/images";
-import QuickLinksCard from "@/components/QuickLinksCard";
-import CtaLink from "@/components/CtaLink";
-import Announcement from "common/announcement/Announcement";
+import QuickLinksCard from "@/components/common/QuickLinksCard";
+import HomepageLatestSermon from "@/components/common/HomapageLatestSermon/HomepageLatestSermon";
+import { Suspense } from "react";
+import { HomepageLatestSermonSkeleton } from "components/skeletons";
+import { EventType, fetchEvents } from "../api/events";
+import { fetchImageByTitle } from "../api/images";
+import { urlForImage } from "sanity/lib/image";
+import Image from "next/image";
+import Events from "@/components/common/Events";
+import Announcement from "@/components/common/announcement/Announcement";
 
 export default async function Home() {
-	const {
-		title,
-		slug: { current },
-		mainImage,
-	}: SermonType = await fetchLatestSermon();
-	const latestSermonImage = urlForImage(mainImage);
-
 	const events: EventType[] = await fetchEvents();
 
 	const { mainImage: lifeGroupImage } = await fetchImageByTitle("lifegroups");
@@ -37,37 +31,9 @@ export default async function Home() {
 		<main className="flex min-h-screen flex-col items-center justify-between pb-14 lg:max-w-6xl lg:mx-auto">
 			<Announcement />
 
-			<div className="mx-4 relative w-[93%] h-[560px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] lg:w-full lg:h-[700px]">
-				<div className="absolute w-full h-full bg-gradient-to-b from-transparent to-black opacity-55 z-[1] rounded-md" />
-				<Image
-					className="rounded-md"
-					style={{ objectFit: "cover" }}
-					fill
-					src={latestSermonImage}
-					priority
-					alt={`${title}'s image`}
-				/>
-				<div className="absolute bottom-0 z-[2] w-full p-4 lg:w-1/2 lg:bottom-4 lg:left-4">
-					<p className="text-white bg-white/[.3] rounded-xl font-semibold text-[.75rem] text-center w-[33%] py-0.5 mb-1 lg:text-[.8rem]">
-						Latest Sermon
-					</p>
-					<h2 className="text-3xl font-semibold text-white mb-2 lg:text-4xl">
-						{title}
-					</h2>
-					<div className="flex flex-col justify-center items-center gap-2 text-center lg:flex-row lg:gap-4">
-						<CtaLink
-							className="bg-vinegreen text-white font-semibold w-full py-2 rounded-md lg:py-3 lg:w-3/4"
-							linkTitle="Watch Now"
-							href={`/sermons/${current}`}
-						/>
-						<CtaLink
-							className="w-full py-2 font-semibold bg-white rounded-md lg:py-3 lg:w-3/4"
-							href="/sermons"
-							linkTitle="Other Sermons"
-						/>
-					</div>
-				</div>
-			</div>
+			<Suspense fallback={<HomepageLatestSermonSkeleton />}>
+				<HomepageLatestSermon />
+			</Suspense>
 
 			<div className="w-full flex flex-col items-center lg:flex-row lg:h-full lg:items-start lg:gap-10">
 				<div className="w-[93%] my-10 lg:flex-1">
@@ -100,7 +66,7 @@ export default async function Home() {
 									style={{ objectFit: "cover" }}
 									priority
 									src={lifeGroupImageUrl}
-									alt={`${title}'s image`}
+									alt={`LifeGroup Image`}
 								/>
 								<div className="z-10 absolute bottom-5 left-5">
 									<h3 className="text-white text-3xl">

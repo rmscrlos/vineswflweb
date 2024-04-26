@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { getAnnouncements } from "api/announcements";
+import { getAnnouncements } from "@/app/api/announcements";
 import Icon from "common/LucideIcon/Icon";
 import React from "react";
 import {
@@ -12,7 +12,7 @@ import {
 	textColors,
 	iconColors,
 } from "common/announcement/Announcement.classes";
-import CtaLink from "components/CtaLink";
+import CtaLink from "@/components/common/CtaLink";
 
 async function Announcement() {
 	const announcements = await getAnnouncements();

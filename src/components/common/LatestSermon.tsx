@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import { SermonType, fetchLatestSermon } from "@/api/sermons";
-import { urlForImage } from "../../sanity/lib/image";
+import { SermonType, fetchLatestSermon } from "@/app/api/sermons";
+import { urlForImage } from "../../../sanity/lib/image";
 import Link from "next/link";
 
 const LatestSermon: React.FC = async () => {

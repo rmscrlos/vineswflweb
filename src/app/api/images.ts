@@ -1,5 +1,5 @@
 import { Image } from "sanity";
-import { client } from "../../sanity/lib/client";
+import { client } from "../../../sanity/lib/client";
 
 export const fetchImageByTitle = async (title: string) => {
 	const query = `*[_type == "Images" && !(_id in path("drafts.**")) &&  title == '${title}']{

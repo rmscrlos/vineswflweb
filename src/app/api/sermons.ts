@@ -1,4 +1,4 @@
-import { File, Image, TypedObject } from "sanity";
+import { Image, TypedObject } from "sanity";
 import { client } from "sanity/lib/client";
 
 export type SermonType = {
@@ -46,6 +46,7 @@ export const fetchLatestSermon = async () => {
 		{},
 		{ cache: "no-cache" }
 	);
+
 	return sermon;
 };
 

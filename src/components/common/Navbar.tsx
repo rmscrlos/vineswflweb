@@ -23,6 +23,10 @@ const Navbar: React.FC = () => {
 							{link.name}
 						</NavigationMenuLink>
 					))}
+					<NavigationMenuLink
+						className="hidden lg:inline"
+						href="/stream"
+					></NavigationMenuLink>
 				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>

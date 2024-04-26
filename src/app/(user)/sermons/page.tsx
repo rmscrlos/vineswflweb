@@ -7,9 +7,9 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel";
 import { urlForImage } from "../../../../sanity/lib/image";
-import LatestSermon from "@/components/LatestSermon";
-import { fetchRecentSermons, SermonType } from "@/api/sermons";
-import CtaLink from "@/components/CtaLink";
+import LatestSermon from "@/components/common/LatestSermon";
+import { fetchRecentSermons, SermonType } from "@/app/api/sermons";
+import CtaLink from "@/components/common/CtaLink";
 
 export default async function SermonsPage() {
 	const recentSermons: SermonType[] = await fetchRecentSermons();

@@ -11,7 +11,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
-import { fetchSermons, SermonType } from "@/api/sermons";
+import { fetchSermons, SermonType } from "@/app/api/sermons";
 import { urlForImage } from "../../../../../sanity/lib/image";
 
 export default async function AllSermonsPage() {
