@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import giveTextGif from "@/lib/images/givetext.gif";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 interface TextGivingDataType {
 	id: number;

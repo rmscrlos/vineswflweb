@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
 				<h3 className="font-semibold text-lg mb-2">Media</h3>
 				<ul className="text-md text-white/65 flex flex-col gap-1 font-light">
 					<Link href="/sermons">Sermons</Link>
-					<Link href="#">Podcast</Link>
+					<Link href="/podcast">Podcast</Link>
 				</ul>
 			</div>
 			<div className="mb-8">
