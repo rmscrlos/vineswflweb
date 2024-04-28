@@ -48,7 +48,7 @@ const textGivingData: TextGivingDataType[] = [
 
 export default function GivingPage() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between pb-14 max-w-sm px-2 lg:max-w-7xl mx-auto">
+		<main className="flex min-h-screen flex-col items-center justify-between pb-14 max-w-sm px-2 lg:max-w-6xl mx-auto">
 			<div className="relative flex justify-center items-center h-[400px] mb-10">
 				<div className="absolute -z-10 h-full w-full bg-[radial-gradient(30em_circle_at_50%_200px,#43bab6,transparent_40%)] opacity-30 mx-auto top-0 inset-x-0;" />
 				<h1 className="text-left font-bold text-4xl px-4 text-shadow text-black lg:w-2/4 lg:text-center lg:text-6xl">
