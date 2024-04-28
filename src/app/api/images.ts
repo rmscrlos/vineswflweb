@@ -1,4 +1,3 @@
-import { Image } from "sanity";
 import { client } from "../../../sanity/lib/client";
 
 export const fetchImageByTitle = async (title: string) => {
@@ -7,6 +6,7 @@ export const fetchImageByTitle = async (title: string) => {
         title,
         mainImage,
     }`;
+
 	const image = await client.fetch(query, {}, { cache: "no-cache" });
 	return image[0];
 };

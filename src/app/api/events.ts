@@ -44,7 +44,6 @@ export const deleteEvent = (event: EventType) => {
 			new Date().getTime() >= new Date(event?.endDate).getTime()) ||
 		new Date().getTime() >= new Date(event.startDate).getTime()
 	) {
-		console.log(event.title, event.endDate, event._id);
 		client.delete(`${event._id}`);
 	} else {
 		return;

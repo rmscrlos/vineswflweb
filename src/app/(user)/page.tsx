@@ -13,19 +13,17 @@ import {
 import QuickLinksCard from "@/components/common/QuickLinksCard";
 import HomepageLatestSermon from "@/components/common/HomapageLatestSermon/HomepageLatestSermon";
 import { Suspense } from "react";
-import { HomepageLatestSermonSkeleton } from "components/skeletons";
+import {
+	HomepageLatestSermonSkeleton,
+	JoinALifegroupSkeleton,
+} from "components/skeletons";
 import { EventType, fetchEvents } from "../api/events";
-import { fetchImageByTitle } from "../api/images";
-import { urlForImage } from "sanity/lib/image";
-import Image from "next/image";
 import Events from "@/components/common/Events";
-import Announcement from "@/components/common/announcement/Announcement";
+import Announcement from "components/common/announcement/Announcement";
+import JoinALifegroup from "components/common/JoinALifegroup";
 
 export default async function Home() {
 	const events: EventType[] = await fetchEvents();
-
-	const { mainImage: lifeGroupImage } = await fetchImageByTitle("lifegroups");
-	const lifeGroupImageUrl = urlForImage(lifeGroupImage);
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between pb-14 lg:max-w-6xl lg:mx-auto">
@@ -36,6 +34,7 @@ export default async function Home() {
 			</Suspense>
 
 			<div className="w-full flex flex-col items-center lg:flex-row lg:h-full lg:items-start lg:gap-10">
+				{/* New Here? */}
 				<div className="w-[93%] my-10 lg:flex-1">
 					<div className="mb-8">
 						<h2 className="text-3xl text-left font-semibold mb-6">New Here?</h2>
@@ -53,44 +52,19 @@ export default async function Home() {
 							</Link>
 						</div>
 					</div>
+
+					{/* Events */}
 					<div>
 						<h2 className="text-3xl text-left font-semibold mb-6">Events</h2>
 						{events && <Events events={events} />}
 
-						{lifeGroupImageUrl && (
-							<div className="relative text-black/30 h-[450px] rounded-md flex justify-center items-center font-semibold">
-								<div className="absolute w-full h-[450px] bg-gradient-to-b from-transparent to-black opacity-75 z-[1] rounded-md" />
-								<Image
-									className="rounded-md"
-									fill
-									style={{ objectFit: "cover" }}
-									priority
-									src={lifeGroupImageUrl}
-									alt={`LifeGroup Image`}
-								/>
-								<div className="z-10 absolute bottom-5 left-5">
-									<h3 className="text-white text-3xl">
-										This is Church. Anywhere!
-									</h3>
-
-									<p className="text-white text-md font-light mb-2">
-										Church happens in small groups!
-									</p>
-
-									<div className="flex items-center gap-2">
-										<Link
-											href="https://vineswfl.churchcenter.com/groups"
-											className="text-white bg-vinegreen rounded-md px-5 py-2 lg:text-lg lg:transition-all lg:duration-300 lg:hover:-translate-y-1"
-										>
-											Join A LifeGroup
-										</Link>
-									</div>
-								</div>
-							</div>
-						)}
+						<Suspense fallback={<JoinALifegroupSkeleton />}>
+							<JoinALifegroup />
+						</Suspense>
 					</div>
 				</div>
 
+				{/* Quick Links */}
 				<div className="flex w-[93%] flex-col items-center lg:my-10 lg:w-auto">
 					<div className="mb-4 w-full">
 						<QuickLinksCard

@@ -6,7 +6,6 @@ export const runtime = "edge";
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);
 	const username = searchParams.get("username");
-	console.log({ username, searchParams });
 	if (!username) {
 		return new ImageResponse(<>Visit with &quot;?username=vercel&quot;</>, {
 			width: 1200,

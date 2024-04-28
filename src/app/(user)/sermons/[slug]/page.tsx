@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ReactPlayer from "react-player";
@@ -10,11 +9,10 @@ import { HelpingHand } from "lucide-react";
 
 import { SermonType, fetchSermonBySlug } from "@/app/api/sermons";
 import { Skeleton } from "components/ui/skeleton";
-import ShareSermon from "@/components/common/ShareSermon";
+import ShareSermon from "components/common/ShareSermon";
 
-export default function SermonPage() {
+function SermonPage() {
 	const [sermon, setSermon] = useState<SermonType | null>(null);
-	const { setTheme } = useTheme();
 	const { slug } = useParams();
 	const publishedDate = new Date(sermon?.publishedAt || "").toLocaleDateString(
 		"en-US",
@@ -22,13 +20,6 @@ export default function SermonPage() {
 	);
 
 	const sermonUrl = `https://www.vineswfl.church/sermons/${slug}`;
-
-	useEffect(() => {
-		setTheme("dark");
-		return () => {
-			setTheme("light");
-		};
-	}, [setTheme]);
 
 	useEffect(() => {
 		fetchSermonBySlug(slug).then((res: any) => setSermon(res));
@@ -58,7 +49,7 @@ export default function SermonPage() {
 			) : (
 				<div>
 					<div className="mb-4">
-						<Skeleton className="w-[358px] h-[360px] rounded-md lg:w-full lg:h-[600px]" />
+						<Skeleton className="w-[358px] h-[360px] rounded-md md:w-full md:h-[600px]" />
 					</div>
 					<div className="flex flex-col gap-2 mb-10">
 						<Skeleton className="w-[200px] h-6 rounded-md" />
@@ -101,3 +92,5 @@ export default function SermonPage() {
 		</main>
 	);
 }
+
+export default SermonPage;

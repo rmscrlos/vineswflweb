@@ -17,3 +17,20 @@ export function HomepageLatestSermonSkeleton() {
 		</div>
 	);
 }
+
+export function JoinALifegroupSkeleton() {
+	return (
+		<div
+			className={`${shimmer} relative bg-gray-200 h-[450px] rounded-md flex justify-center items-center font-semibold`}
+		>
+			<div className="z-10 absolute bottom-5 left-5 w-2/3 lg:w-1/3">
+				<div className="rounded-md bg-gray-300 h-[36px] mb-2" />
+				<div className="rounded-md bg-gray-300 h-[15px] w-1/2 mb-3" />
+
+				<div className="flex items-center gap-2">
+					<div className="h-[48px] font-semibold w-2/3 rounded-md lg:w-3/4 bg-gray-300" />
+				</div>
+			</div>
+		</div>
+	);
+}
